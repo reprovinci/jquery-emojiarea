@@ -21,6 +21,7 @@
 	var TAGS_BLOCK = ['p', 'div', 'pre', 'form'];
 	var KEY_ESC = 27;
 	var KEY_TAB = 9;
+	var NON_BREAKING_SPACE_GLOBAL_REGEX = new RegExp(String.fromCharCode(160), "g");
 
 	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -334,7 +335,7 @@
 
 		if (line.length) flush();
 
-		return lines.join('\n');
+		return lines.join('\n').replace(NON_BREAKING_SPACE_GLOBAL_REGEX, " ");
 	};
 
 	util.extend(EmojiArea_WYSIWYG.prototype, EmojiArea.prototype);
